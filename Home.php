@@ -9,8 +9,7 @@
 <body>
     <form method="POST" action="index.php"> 
     <label>Deseja Abrir conta corrente ou conta poupanças?</label><br>
-    <input type="radio" id="Conta" name="Conta" value="Conta Corrente" checked>Conta Corrente 
-  
+    <input type="radio" id="Conta" name="Conta" value="Conta Corrente" checked>Conta Corrente  
     <input type="radio" id="Conta" name="Conta" value="Conta Poupança ">Conta Poupança
 
     <input type="submit" value="enviar">

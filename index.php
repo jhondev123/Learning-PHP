@@ -1,33 +1,33 @@
 <?php
 require_once "Conta.php";
-require_once "Conta_Corrente.php";
+require_once "Conta_Corrente.php"; //Chama as classes do sistema
 require_once "Conta_Poupanca.php";
-$num_conta = random_int(1000, 2000);
-$nome = $_POST["nome"];
+require_once "Pessoa.php";
+require_once "Cliente.php";
+$num_conta = random_int(1000, 2000); //gera o numero da conta
+$nome = $_POST["nome"];// as variaveis recebem os valores digitados nos campos
 $cpf = $_POST["cpf"];
-$senha = $_POST["senha"];
+$senha = $_POST["senha"]; 
 $tipo_conta = $_POST["Conta"];
-if (isset($_POST["Conta"])) {
-    if ($tipo_conta == "Conta Corrente") {
-        $conta1 = new Conta_Corrente($num_conta, $nome, $cpf, $senha);
+if (isset($_POST["Conta"])) { //testa se o campo conta é nulo
+    if ($tipo_conta == "Conta Corrente") {//testa o tipo da conta
+        $conta1 = new Conta_Corrente($num_conta, $nome, $cpf, $senha);  //instancia a conta de acordo com o teste lógico
     } else {
         $conta1 = new Conta_Poupanca($num_conta, $nome, $cpf, $senha);
     }
 }
-$conta1->fecharConta();
-$conta1->verDadosdaConta();
+ // chamamento dos métodos da conta
+
 ?>
 <!DOCTYPE html>
 <html lang="br">
-
 <head>
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="Style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abertura de conta</title>
 </head>
-
 <body>
     <div class="container">
         <div class="formulario">
@@ -43,10 +43,8 @@ $conta1->verDadosdaConta();
                     <input type="radio" id="Conta" name="Conta" value="Conta Corrente" checked>Conta Corrente
                     <input type="radio" id="Conta" name="Conta" value="Conta Poupanca">Conta Poupança
                     <input type="submit" value="enviar" id="enviar">
-
             </div>
         </div>
         </form>
 </body>
-
 </html>

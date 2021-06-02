@@ -15,16 +15,16 @@ abstract class Conta
     public function __destruct()
     {
     }
-    public function deposita($saldo, $quantia)
+    public function deposita($saldo, $quantia,$status)
     {
-        if ($quantia > 100) {
+        if ($quantia > 100 && $status=="aberta") {
             $saldo += $quantia;
             return $saldo;
         } else {
-            echo "Deposito não foi possivel ser realizado";
+            echo " Deposito não foi possivel ser realizado ";
         }
     }
-    public function saque($saldo, $quantia, $status)
+    public  function saque($saldo, $quantia, $status)
     {
         if ($quantia <= $saldo && $status == "aberta") {
             $saldo -= $quantia;
@@ -49,12 +49,12 @@ abstract class Conta
     }
     public function fecharContasuper($saldo, $quantia, $status)
     {
-        $this->saque($saldo, $quantia, $status);
-        if ($saldo <= 0 && $status == "aberta") {
-            $status = "fechada";
-            echo "Conta está : $status";
+        $valor = $this->saque($saldo, $quantia, $status);
+        if ($valor == 0 && $status == "aberta") {
+            return $valor;
+            
         } else {
-            echo "Conta está : $status";
+            
         }
     }
     public function setNumConta($numconta)

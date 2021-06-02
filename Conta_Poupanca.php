@@ -16,7 +16,7 @@ class Conta_Poupanca extends Conta
     }
     public function depositar($quantia)
     {
-        $saldoatual = parent::deposita($this->saldo, $quantia);
+        $saldoatual = parent::deposita($this->saldo, $quantia,$this->status);
         echo "saldo atual : $saldoatual";
         $this->saldo = $saldoatual;
     }
@@ -33,12 +33,10 @@ class Conta_Poupanca extends Conta
     }
     public function fecharConta()
     {
-        $this->sacar($this->saldo);
-        if ($this->saldo <= 0 && $this->status == "aberta") {
-            $this->status = "fechada";
-            echo " Conta está : $this->status";
-        } else {
-            echo " Conta está : $this->status";
+        $this->saldo =  parent::fecharContasuper($this->saldo,$this->saldo,$this->status);
+        if($this->saldo==0){
+        $this->status="fechada";
+        echo "Conta $this->status com sucesso. e o saldo atual ficou: $this->saldo";
         }
     }
     public function pagarMensalidade()

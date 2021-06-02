@@ -4,6 +4,12 @@ require_once "Conta_Corrente.php"; //Chama as classes do sistema
 require_once "Conta_Poupanca.php";
 require_once "Pessoa.php";
 require_once "Cliente.php";
+require_once "Read_stmt.php";
+require_once "Create_stmt.php";
+require_once "Update_stmt.php";
+require_once "Create_stmt.php";
+require_once "Connection.php";
+try{
 $num_conta = random_int(1000, 2000); //gera o numero da conta
 $nome = $_POST["nome"];// as variaveis recebem os valores digitados nos campos
 $cpf = $_POST["cpf"];
@@ -16,8 +22,11 @@ if (isset($_POST["Conta"])) { //testa se o campo conta é nulo
         $conta1 = new Conta_Poupanca($num_conta, $nome, $cpf, $senha);
     }
 }
+ler();
  // chamamento dos métodos da conta
-
+}catch(Exception $e){
+    echo "Error : ". $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="br">

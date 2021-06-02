@@ -1,4 +1,5 @@
 <?php
+function ler(){
 include "Connection.php";
 try {
 $connection = getConnection();
@@ -14,4 +15,5 @@ foreach($result as $value)
 }
 }catch(PDOException $e){
     echo " Erro : " . $e->getMessage();
+}
 }

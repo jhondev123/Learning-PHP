@@ -1,15 +1,15 @@
 <?php
+function save($nome,$saldo,$status,$cpf,$password){
 include "Connection.php";
 try{
 $connect=getConnection();
 $sql = "INSERT INTO Contas_Corrente(nome,saldo,status,cpf,password)VALUES(?,?,?,?,?)";
 $stmt = $connect->Prepare($sql);
-
-$stmt->bindValue(1," Lucão");
-$stmt->bindValue(2,100.00);
-$stmt->bindValue(3,"aberta");
-$stmt->bindValue(4,123);
-$stmt->bindValue(5,"jhon000");
+$stmt->bindParam(1,$nome);
+$stmt->bindParam(2,$saldo);
+$stmt->bindParam(3,$status);
+$stmt->bindParam(4,$cpf);
+$stmt->bindParam(5,$password);
 if($stmt->execute()){
     echo" Deu certo ";
 }else{
@@ -17,4 +17,5 @@ if($stmt->execute()){
 }
 }catch(PDOException $E){
     echo" O erro é : ". $E->getMessage();
+}
 }

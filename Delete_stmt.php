@@ -1,11 +1,10 @@
 <?php
+function delete($id){
 include "Connection.php";
 try {
 $connection = getConnection();
 $sql= "DELETE FROM contas_corrente WHERE  idConta_Corrente= :id";
 $stmt = $connection->prepare($sql);
-$nome="tiago";
-$id=2;
 $stmt->bindParam("id",$id);
 if($stmt->execute()){
     echo "Deletado com sucesso ";
@@ -14,4 +13,5 @@ if($stmt->execute()){
 }
 }catch(PDOException $e){
     echo " Erro : " . $e->getMessage();
+}
 }

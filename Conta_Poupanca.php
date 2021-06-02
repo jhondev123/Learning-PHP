@@ -1,9 +1,6 @@
-
 <?php
-
 class Conta_Poupanca extends Conta
 {
-
     public function Conta_Poupanca($numconta, $dono, $cpf, $senha)
     {
         $this->numconta = $numconta;
@@ -20,7 +17,6 @@ class Conta_Poupanca extends Conta
         echo "saldo atual : $saldoatual";
         $this->saldo = $saldoatual;
     }
-
     public function sacar($quantia)
     {
         $saldoatual = parent::saque($this->saldo, $quantia, $this->status);
@@ -44,5 +40,4 @@ class Conta_Poupanca extends Conta
         $this->saldo -= 10;
     }
 }
-
 ?>

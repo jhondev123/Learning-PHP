@@ -1,13 +1,15 @@
 <?php
-function getConnection(){
+function getCon()//função que retorna a conexão
+{
+    //dados do banco
     $a='mysql:host=localhost;dbname=Banco;charse=utf8';
     $b='root';
     $c="";
-try {
-$connection = new PDO($a,$b,$c);
-$connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-return $connection;
-}catch(PDOException $error){
+try { //caso houver uma exceção
+$connection = new PDO($a,$b,$c);//ligação com o banco
+$connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);//declara que é ter um relátorio de erros e que lance exceçoes
+    return $connection;
+    }catch(PDOException $error){  //tratamento da exceção
     echo" Error ". $error->getMessage();
 }
 }

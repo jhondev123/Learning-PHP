@@ -1,9 +1,9 @@
 <?php
 function delete($id){
-include "Connection.php";
+include_once "Connection.php";
 try {
-$connection = getConnection();
-$sql= "DELETE FROM contas_corrente WHERE  idConta_Corrente= :id";
+$connection = getCon();
+$sql= "DELETE FROM contas_corrente WHERE  idConta_Corrente= :id";//deleta os dados
 $stmt = $connection->prepare($sql);
 $stmt->bindParam("id",$id);
 if($stmt->execute()){

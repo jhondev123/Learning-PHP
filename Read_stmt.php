@@ -1,9 +1,9 @@
 <?php
 function ler(){
-include "Connection.php";
+include_once "Connection.php";
 try {
-$connection = getConnection();
-$sql= "SELECT * FROM contas_corrente WHERE idConta_Corrente = :id";
+$connection = getCon();
+$sql= "SELECT * FROM contas_corrente WHERE idConta_Corrente = :id"; //busca os dados
 $stmt = $connection->prepare($sql);
 $stmt->bindValue(":id",1);
 $stmt->execute();

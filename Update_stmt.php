@@ -1,11 +1,11 @@
 <?php
 function atualizar($campo,$valor,$id){
-include "Connection.php";
+include_once "Connection.php";
 try {
-$connection = getConnection();
+$connection = getCon();
 // Fazendo o teste para saber qual campo quer que seja alterado e de qual id //
 if($campo=="nome"){
-    $sql= "UPDATE contas_corrente SET nome = :nome WHERE idConta_Corrente= :id";
+    $sql= "UPDATE contas_corrente SET nome = :nome WHERE idConta_Corrente= :id"; // atualiza os dados
     $stmt = $connection->prepare($sql);
     $stmt->bindParam("id",$id);
         $stmt->bindParam("nome",$nome);

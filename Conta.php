@@ -1,21 +1,23 @@
 <?php
-abstract class Conta
+abstract class Conta // classe abstrata para suas filhas herdarem dela
 {
     private $numconta;
     private $tipo;
     private $dono;
-    private $saldo;
-    private $status;
+    private $saldo;  
+    private $status; //Atributos
     private $nome;
     private $cpf;
     private $senha;
+    // construtor e destrutor padrão
     public function __construct()
     {
     }
     public function __destruct()
     {
     }
-    public function deposita($saldo, $quantia,$status)
+    //métodos especiais
+    public function deposita($saldo, $quantia,$status) //faz a função depositar nas subclasses serem mais faceis de implementar
     {
         if ($quantia > 100 && $status=="aberta") {
             $saldo += $quantia;
@@ -24,7 +26,7 @@ abstract class Conta
             echo " Deposito não foi possivel ser realizado ";
         }
     }
-    public  function saque($saldo, $quantia, $status)
+    public  function saque($saldo, $quantia, $status) //faz a sacar depositar nas subclasses serem mais faceis de implementar
     {
         if ($quantia <= $saldo && $status == "aberta") {
             $saldo -= $quantia;
@@ -47,7 +49,7 @@ abstract class Conta
         echo "CPF vinculado a conta : " . " $cpf";
         echo "<br>";
     }
-    public function fecharContasuper($saldo, $quantia, $status)
+    public function fecharContasuper($saldo, $quantia, $status) //faz a função fechar conta nas subclasses serem mais faceis de implementar
     {
         $valor = $this->saque($saldo, $quantia, $status);
         if ($valor == 0 && $status == "aberta") {
@@ -57,6 +59,7 @@ abstract class Conta
             
         }
     }
+    //métodos padrão
     public function setNumConta($numconta)
     {
         $this->numconta = $numconta;
